@@ -1,0 +1,45 @@
+[
+  {
+    "name": "minecraftpe-nx-ctr",
+    "originalGame": "Minecraft",
+    "rating": 5,
+    "developer": "efimandreev0 (Efim)",
+    "originalLink": "https://github.com/efimandreev0/minecraftpe-nx-ctr",
+    "description": "Minecraft PE 0.6.1 port for 3DS (and Switch).",
+    "download": "https://files.catbox.moe/bfi4di.zip",
+    "image": "https://i.redd.it/jwgv6lwu2r1h1.jpeg"
+  },
+
+  {
+    "name": "ClassiCube",
+    "originalGame": "Minecraft",
+    "rating": 3,
+    "developer": "UnknownShadow200",
+    "originalLink": "https://www.classicube.net/download/3ds",
+    "description": "An open-source clone of Minecraft Classic for 3DS with online play.",
+    "download": "https://cdn.classicube.net/client/latest/ClassiCube-3ds.cia",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDRCuSV-fHmHK8ZDKUftCFdddbWH9W53ASTLiU0ESxWQ&s=10"
+  },
+
+  {
+    "name": "Retro League GX",
+    "originalGame": "Rocket League",
+    "rating": 2,
+    "developer": "mholtkamp (Martin Holtkamp)",
+    "originalLink": "https://github.com/mholtkamp/retro-league",
+    "description": "A Rocket League demake for old consoles and 3DS.",
+    "download": "https://github.com/mholtkamp/retro-league/releases/download/0.21/RetroLeague_3DS.3dsx",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_pxJEPzRNyKGX5FjduUcCoK49J6b7xoeFeD7ldhaLlA&s=10"
+  },
+
+  {
+    "name": "Scratch Everywhere",
+    "originalGame": "Scratch",
+    "rating": 4,
+    "developer": "NateXS",
+    "originalLink": "https://github.com/ScratchEverywhere/ScratchEverywhere",
+    "description": "Reads Scratch 3 projects (.sb3) on 3DS.",
+    "download": "https://github.com/ScratchEverywhere/ScratchEverywhere/releases/download/1.0-rc1/scratch-3ds.cia",
+    "image": "https://wiiu.cdn.fortheusers.org/packages/ScratchWiiU/icon.png"
+  }
+]

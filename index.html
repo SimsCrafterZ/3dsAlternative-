@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3dsAlternative</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111827;
+      color: white;
+    }
+
+    header {
+      background: linear-gradient(90deg, #2563eb, #7c3aed);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2em;
+    }
+
+    .search-box {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .search-box input {
+      width: 80%;
+      max-width: 500px;
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background: #1f2937;
+      border-radius: 18px;
+      padding: 18px;
+      transition: 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 12px;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .card h2 {
+      margin-top: 12px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      margin: 8px 0;
+      line-height: 1.4;
+    }
+
+    .card a {
+      color: #60a5fa;
+    }
+
+    .download {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 14px;
+      background: #2563eb;
+      color: white !important;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: 0.2s;
+    }
+
+    .download:hover {
+      background: #1d4ed8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎮 3dsAlternative</h1>
+  <p>The best homebrew (or official) alternatives for Nintendo 3DS</p>
+</header>
+
+<div class="search-box">
+  <input type="text" id="search" placeholder="Search for a game...">
+</div>
+
+<div class="games" id="games"></div>
+
+<footer>
+  3dsAlternative - Homebrew 3DS website
+</footer>
+
+<script>
+const gamesContainer = document.getElementById("games");
+const searchInput = document.getElementById("search");
+
+let games = [];
+
+fetch("games.json")
+  .then(res => res.json())
+  .then(data => {
+    games = data;
+
+    // Trier par note
+    games.sort((a, b) => b.rating - a.rating);
+
+    displayGames(games);
+  })
+  .catch(error => {
+    console.error("Erreur lors du chargement du JSON :", error);
+
+    gamesContainer.innerHTML = `
+      <p style="padding:20px;font-size:20px;color:red;">
+        Failed to load games.json
+      </p>
+    `;
+  });
+
+function displayGames(list) {
+  gamesContainer.innerHTML = "";
+
+  if (list.length === 0) {
+    gamesContainer.innerHTML = `
+      <p style="padding:20px;font-size:20px;">
+        No results found, please suggest a game.
+      </p>
+    `;
+    return;
+  }
+
+  list.forEach(game => {
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img src="${game.image}" alt="${game.name}">
+
+      <h2>${game.name}</h2>
+
+      <p>
+        <b>Alternative to:</b> ${game.originalGame}
+      </p>
+
+      <p>
+        <b>Developer:</b> ${game.developer}
+      </p>
+
+      <p>
+        <b>Original link:</b>
+        <a href="${game.originalLink}" target="_blank">
+          Source
+        </a>
+      </p>
+
+      <p>${game.description}</p>
+
+      <a class="download" href="${game.download}" target="_blank">
+        Download
+      </a>
+    `;
+
+    gamesContainer.appendChild(card);
+  });
+}
+
+searchInput.addEventListener("input", () => {
+  const value = searchInput.value.toLowerCase();
+
+  const filtered = games.filter(game =>
+    game.name.toLowerCase().includes(value) ||
+    game.originalGame.toLowerCase().includes(value) ||
+    game.description.toLowerCase().includes(value)
+  );
+
+  // Trier les résultats par note
+  filtered.sort((a, b) => b.rating - a.rating);
+
+  displayGames(filtered);
+});
+</script>
+
+</body>
+</html>
