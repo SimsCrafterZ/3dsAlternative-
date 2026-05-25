@@ -16,7 +16,7 @@
     "rating": 3,
     "developer": "UnknownShadow200",
     "originalLink": "https://www.classicube.net/download/3ds",
-    "description": "An open-source clone of Minecraft Classic for 3DS with online play.",
+    "description": "Custom Minecraft Classic / ClassiCube client written in C from scratch (formerly ClassicalSharp in C#)",
     "download": "https://cdn.classicube.net/client/latest/ClassiCube-3ds.cia",
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDRCuSV-fHmHK8ZDKUftCFdddbWH9W53ASTLiU0ESxWQ&s=10"
   },
@@ -38,7 +38,7 @@
     "rating": 4,
     "developer": "NateXS",
     "originalLink": "https://github.com/ScratchEverywhere/ScratchEverywhere",
-    "description": "Reads Scratch 3 projects (.sb3) on 3DS.",
+    "description": "Play Scratch games on your 3DS!",
     "download": "https://github.com/ScratchEverywhere/ScratchEverywhere/releases/download/1.0-rc1/scratch-3ds.cia",
     "image": "https://wiiu.cdn.fortheusers.org/packages/ScratchWiiU/icon.png"
   }
