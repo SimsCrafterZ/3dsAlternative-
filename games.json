@@ -41,5 +41,16 @@
     "description": "Play Scratch games on your 3DS!",
     "download": "https://github.com/ScratchEverywhere/ScratchEverywhere/releases/download/1.0-rc1/scratch-3ds.cia",
     "image": "https://wiiu.cdn.fortheusers.org/packages/ScratchWiiU/icon.png"
+  },
+
+  {
+    "name": "🆕RE3",
+    "originalGame": "Grand theft auto III (gta 3)",
+    "rating": 6,
+    "developer": "?",
+    "originalLink": "https://github.com/ScratchEverywhere/ScratchEverywhere",
+    "description": "?",
+    "download": "?",
+    "image": "https://www.gamebrew.org/wiki/File:Re33ds2.png"
   }
 ]
