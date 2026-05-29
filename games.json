@@ -70,9 +70,9 @@
     "originalGame": "Halo",
     "rating": 8,
     "developer": "Arcade Jumpers",
-    "originalLink": "https://github.com/2b-zipper/TriCord/",
-    "description": "Discord client for Nintendo 3DS.",
-    "download": "https://github.com/2b-zipper/TriCord/releases/download/v0.4.1/TriCord.cia",
+    "originalLink": "https://github.com/ArcadeJumpers/RenewedSolitude3DS",
+    "description": "A Halo demake for 3ds and and other consoles",
+    "download": "https://files.catbox.moe/0eq5dm.zip",
     "image": "https://kevdoy.com/projectscreenshots/halo-promo-old-and-new.jpg"
   }
 ]
