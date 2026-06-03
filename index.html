@@ -6,7 +6,7 @@
   <title>3dsAlternative</title>
 
   <link rel="icon" type="image/png" href="logo.png">
-  
+
   <style>
     body {
       margin: 0;
@@ -78,10 +78,6 @@
       line-height: 1.4;
     }
 
-    .card a {
-      color: black;
-    }
-
     .download {
       display: inline-block;
       margin-top: 12px;
@@ -102,14 +98,24 @@
       padding: 20px;
       color: #aaa;
     }
+
+    /* conteneur avis */
+    .reviews {
+      margin-top: 10px;
+    }
   </style>
 </head>
+
 <body>
 
 <header>
   <h1>🎮 3dsAlternative</h1>
-  <p>The best homebrew (or official) alternatives for Nintendo 3DS<br>Suggest a game <a href="https://github.com/SimsCrafterZ/3dsAlternative-/issues/1">here</a> !</p>
+  <p>The best homebrew (or official) alternatives for Nintendo 3DS<br>
+  Suggest a game <a href="https://github.com/SimsCrafterZ/3dsAlternative-/issues/1">here</a> !</p>
 </header>
+
+<!-- ⚠️ Elfsight script UNE seule fois -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
 
 <div class="search-box">
   <input type="text" id="search" placeholder="Search for a game...">
@@ -131,60 +137,42 @@ fetch("games.json")
   .then(res => res.json())
   .then(data => {
     games = data;
-
-    // Trier par note
     games.sort((a, b) => b.rating - a.rating);
-
     displayGames(games);
-  })
-  .catch(error => {
-    console.error("Erreur lors du chargement du JSON :", error);
-
-    gamesContainer.innerHTML = `
-      <p style="padding:20px;font-size:20px;color:red;">
-        Failed to load games.json
-      </p>
-    `;
   });
 
 function displayGames(list) {
   gamesContainer.innerHTML = "";
 
   if (list.length === 0) {
-    gamesContainer.innerHTML = `
-      <p style="padding:20px;font-size:20px;">
-        No results found, please suggest a game <a href="https://github.com/SimsCrafterZ/3dsAlternative-/issues/1">here</a> !
-      </p>
-    `;
+    gamesContainer.innerHTML = `<p style="padding:20px;">No results found</p>`;
     return;
   }
 
-  list.forEach(game => {
+  list.forEach((game, index) => {
 
     const card = document.createElement("div");
     card.className = "card";
 
+    const widgetId = `elfsight-${index}`;
+
     card.innerHTML = `
       <img src="${game.image}" alt="${game.name}">
-
       <h2>${game.name}</h2>
 
-      <p>
-        <b>Alternative to:</b> ${game.originalGame}
-      </p>
-
-      <p>
-        <b>Developer:</b> ${game.developer}
-      </p>
+      <p><b>Alternative to:</b> ${game.originalGame}</p>
+      <p><b>Developer:</b> ${game.developer}</p>
 
       <p>
         <b>Original link:</b>
-        <a href="${game.originalLink}" target="_blank">
-          Source
-        </a>
+        <a href="${game.originalLink}" target="_blank">Source</a>
       </p>
 
       <p>${game.description}</p>
+
+      <div class="reviews">
+        <div class="elfsight-app-3cf42940-9be5-47f7-8ff7-cf4b8ebc385d" data-elfsight-app-lazy></div>
+      </div>
 
       <a class="download" href="${game.download}" target="_blank">
         Download
@@ -204,7 +192,6 @@ searchInput.addEventListener("input", () => {
     game.description.toLowerCase().includes(value)
   );
 
-  // Trier les résultats par note
   filtered.sort((a, b) => b.rating - a.rating);
 
   displayGames(filtered);
