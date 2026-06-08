@@ -69,25 +69,33 @@ header h1 {
 }
 
 .card h2 {
-  margin: 15px;
   text-align: center;
+  margin: 15px;
 }
 
-.details {
+#gameDetails {
   display: none;
-  padding: 15px;
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.hero-image {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 20px;
 }
 
 .screenshot {
   width: 100%;
-  margin-top: 10px;
-  border-radius: 10px;
+  border-radius: 12px;
+  margin-top: 12px;
 }
 
 .download {
   display: inline-block;
-  margin-top: 12px;
-  padding: 10px 14px;
+  margin-top: 20px;
+  padding: 12px 18px;
   background: #2563eb;
   color: white;
   text-decoration: none;
@@ -98,6 +106,15 @@ header h1 {
   background: #1d4ed8;
 }
 
+.back-btn {
+  margin-top: 20px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
 footer {
   text-align: center;
   padding: 20px;
@@ -105,6 +122,7 @@ footer {
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -112,7 +130,7 @@ footer {
   <p>
     The best homebrew (or official) alternatives for Nintendo 3DS<br>
     Suggest a game
-    <a href="https://github.com/SimsCrafterZ/3dsAlternative-/issues/1">
+    <a href="https://github.com/SimsCrafterZ/3dsAlternative-/issues/1" target="_blank">
       here
     </a>!
   </p>
@@ -124,6 +142,8 @@ footer {
 
 <div class="games" id="games"></div>
 
+<div id="gameDetails"></div>
+
 <footer>
   3dsAlternative - 2026 SimsCrafterZ<br>
   0.2.0
@@ -132,6 +152,7 @@ footer {
 <script>
 const gamesContainer = document.getElementById("games");
 const searchInput = document.getElementById("search");
+const gameDetails = document.getElementById("gameDetails");
 
 let games = [];
 
@@ -153,55 +174,73 @@ function displayGames(list) {
 
   list.forEach(game => {
 
-    const screenshots = game.screenshots
-      ? game.screenshots.map(img =>
-          `<img class="screenshot" src="${img}" alt="Screenshot">`
-        ).join("")
-      : "";
-
     const card = document.createElement("div");
     card.className = "card";
 
     card.innerHTML = `
       <img src="${game.image}" alt="${game.name}">
       <h2>${game.name}</h2>
-
-      <div class="details">
-
-        ${screenshots}
-
-        <p><b>Developer:</b> ${game.developer}</p>
-
-        <p>
-          <b>Original Link:</b>
-          <a href="${game.originalLink}" target="_blank">
-            Source
-          </a>
-        </p>
-
-        <p>${game.description}</p>
-
-        <a class="download"
-           href="${game.download}"
-           target="_blank">
-          Download
-        </a>
-
-      </div>
     `;
 
     card.addEventListener("click", () => {
-      const details = card.querySelector(".details");
-
-      if (details.style.display === "block") {
-        details.style.display = "none";
-      } else {
-        details.style.display = "block";
-      }
+      showGame(game);
     });
 
     gamesContainer.appendChild(card);
   });
+}
+
+function showGame(game) {
+
+  gamesContainer.style.display = "none";
+  document.querySelector(".search-box").style.display = "none";
+
+  let screenshots = "";
+
+  if (game.screenshots) {
+    screenshots = game.screenshots.map(img =>
+      `<img class="screenshot" src="${img}" alt="Screenshot">`
+    ).join("");
+  }
+
+  gameDetails.innerHTML = `
+    <img class="hero-image" src="${game.image}" alt="${game.name}">
+
+    <h1>${game.name}</h1>
+
+    <p>${game.description}</p>
+
+    ${screenshots}
+
+    <p><b>Developer:</b> ${game.developer}</p>
+
+    <p>
+      <b>Original Link:</b>
+      <a href="${game.originalLink}" target="_blank">
+        Source
+      </a>
+    </p>
+
+    <a class="download"
+       href="${game.download}"
+       target="_blank">
+      Download
+    </a>
+
+    <br>
+
+    <button class="back-btn" onclick="backToGames()">
+      ← Back to games
+    </button>
+  `;
+
+  gameDetails.style.display = "block";
+}
+
+function backToGames() {
+  gameDetails.style.display = "none";
+  gamesContainer.style.display = "grid";
+  document.querySelector(".search-box").style.display = "block";
 }
 
 searchInput.addEventListener("input", () => {
