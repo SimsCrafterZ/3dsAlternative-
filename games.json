@@ -85,5 +85,10 @@
     "description": "Portal-2-For-3DS is a demake of Portal 2 for the Nintendo 3DS, made in Unity.",
     "download": "https://github.com/Drake-Rochelle/Portal-2-For-3DS/archive/refs/tags/PORTal243DS-V0.1.0-Release.zip",
     "image": "https://www.gamebrew.org/images/e/e0/Portal243ds.png?20251220101143"
+    "screenshots": [
+    "portal2_1.png",
+    "portal2_2.png",
+    "portal2_3.png"
+  ],
   }
 ]
