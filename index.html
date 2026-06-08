@@ -161,6 +161,7 @@ fetch("games.json")
   .then(data => {
     games = data;
     displayGames(games);
+    games.sort((a, b) => b.rating - a.rating);
   });
 
 function displayGames(list) {
