@@ -77,7 +77,7 @@
     },
 
   {
-    "name": "Portal-2-For-3DS",
+    "name": "PORTal243DS",
     "originalGame": "Portal 2",
     "screenshots": [
     "https://www.gamebrew.org/thumb.php?f=Portal243ds3.png&width=400",
@@ -87,7 +87,7 @@
     "rating": 9,
     "developer": "Drake Rochelle",
     "originalLink": "https://github.com/Drake-Rochelle/Portal-2-For-3DS/",
-    "description": "Portal-2-For-3DS is a demake of Portal 2 for the Nintendo 3DS, made in Unity.",
+    "description": "PORTal243DS is a demake of Portal 2 for the Nintendo 3DS, made in Unity.",
     "download": "https://github.com/Drake-Rochelle/Portal-2-For-3DS/archive/refs/tags/PORTal243DS-V0.1.0-Release.zip",
     "image": "https://shared.steamstatic.com/community_assets/images/items/620/aae901f5cca93fb9f50fd4746535d24cd572b5b4.jpg"
   }
